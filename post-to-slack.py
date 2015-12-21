@@ -29,7 +29,7 @@ def payload(text, conf):
 	return "payload=" + json.dumps(toPost)
 
 def main():
-	CONFIG_FILE = '/etc/slack_post.cfg'
+	CONFIG_FILE = '/etc/brainy-beats.cfg'
 	# read configuration 
 	conf = ConfigParser.ConfigParser()
 	conf.read(CONFIG_FILE)
