@@ -10,16 +10,14 @@ OUTPUT_LOG="/tmp/beat.log";
 
 # Let's run basic system status commands
 echo "[who]" > $OUTPUT_LOG; 
-who >> $OUTPUT_LOG;
+who -b >> $OUTPUT_LOG;
+who -q >> $OUTPUT_LOG;
 
 echo "[ifconfig]" >> $OUTPUT_LOG;
-ifconfig >> $OUTPUT_LOG;
+ifconfig | grep inet >> $OUTPUT_LOG;
 
-echo "[vmstat]" >> $OUTPUT_LOG;
-vmstat >> $OUTPUT_LOG;
-
-echo "[lsof]" >> $OUTPUT_LOG;
-lsof | grep /dev/ >> $OUTPUT_LOG;
+echo "[ls /dev/tty*]" >> $OUTPUT_LOG;
+ls /dev/tty* | xargs -n10 >> $OUTPUT_LOG;
 
 # call post-to-slack.py to send health report
-
+python /usr/bin/post-to-slack.py -f $OUTPUT_LOG;
