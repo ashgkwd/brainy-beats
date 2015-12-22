@@ -3,3 +3,4 @@
 
 cp post-to-slack.py /usr/bin/
 cp once-internet-is-on-d.py /usr/bin/
+cp beat.sh /usr/bin/

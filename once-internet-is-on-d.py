@@ -9,7 +9,7 @@ import socket
 from subprocess import call
 import time
 
-commands = [["python", "/usr/bin/post-to-slack.py", "Yo! From Brainy Beats"]]
+commands = [["bash", "/usr/bin/beat.sh"]]
 
 def internet(host='8.8.8.8', port=53):
 	try:

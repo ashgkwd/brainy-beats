@@ -33,13 +33,20 @@ def main():
 	# read configuration 
 	conf = ConfigParser.ConfigParser()
 	conf.read(CONFIG_FILE)
+	text = "Hello From Brainy Beats"
+
+	if sys.argv[1] == "-f" and len(sys.argv) > 2:
+		"""Read this file"""
+		text = open(sys.argv[2]).read()
+	else:
+		text = sys.argv[1]
 
 	call([
 		"curl",
 		"-X",
 		"POST",
 		"--data-urlencode",
-		payload(sys.argv[1], conf),
+		payload(text, conf),
 		conf.get("slack", "url")
 		])
 
